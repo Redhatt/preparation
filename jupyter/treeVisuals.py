@@ -319,7 +319,10 @@ class DrawTree:
             return max(h1, h2), max(r1, r2), min(l1, l2)
         
         return dfs(self.root)
+
     
+def jdraw(root):
+    return DrawTree(root, (300, 300)).drawTree()
 
 if __name__ == '__main__':
     level = list(range(0, 12))
