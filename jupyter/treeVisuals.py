@@ -15,7 +15,7 @@ class Node:
         self.left = None
     
     def __repr__(self):
-        return str(self.val)
+        return str(hex(id(self)))
     
     def __str__(self):
         return str(self.val)
@@ -194,16 +194,13 @@ class DrawTree:
         self.root = root
         
         # width, height
-        self.bg_size = (5000, 3000)
-        if size:
-            factor = size[0]/self.bg_size[0]
-            self.resize = (self.bg_size[0] * factor, self.bg_size[1]*factor)
-        else:
-            self.resize = (500, 300)
-            
-        self.node_size = (600, 600)
-        self.font_size = 180
+        self.size = size
+        self.bg_size = (10000, 10000)            
+        self.node_size = (400, 400)
+        self.font_size = 130
         self.line_width = 10
+        self.startx = self.node_size[0]
+        self.starty = self.node_size[1]
         
         self.clrs = {
                      'white': (245, 245, 245), 
@@ -217,14 +214,17 @@ class DrawTree:
         self.node_clr = 'white'
         self.font_clr = 'black'
         self.outline_clr = 'black'
-        
-        self.height = 0
-        self.node_map = defaultdict(lambda :None)
         self.max_chrs = 6
-        self.factor = 10**(log10(self.bg_size[0]/self.resize[0]))
+        
+        self.left = self.bg_size[0]
+        self.right = 0
+        self.top = self.bg_size[1]
+        self.bottom = 0
+        
+        self.nodemap = dict()
     
-    def drawPoint(self, pos):
-        self.draw.ellipse(tuple(map(int, (pos[0]-10, pos[1]-10, pos[0]+10, pos[1]+10))), fill=self.clrs['black'], outline=self.outline_clr, width=self.line_width)
+    def drawPoint(self, pos, clr='red'):
+        self.draw.ellipse(tuple(map(int, (pos[0]-50, pos[1]-50, pos[0]+50, pos[1]+50))), fill=self.clrs[clr], outline=self.outline_clr)
         
     def drawNode(self, root, pos):
         if root is None: return 
@@ -232,94 +232,86 @@ class DrawTree:
         x2, y2 = pos[0] + self.node_size[0]/2, pos[1] + self.node_size[1]/2
         
         posf = ((pos[0] + x1)/2, (pos[1] + y1)/2)
+#         self.draw.rectangle(tuple(map(int, (x1, y1, x2, y2))), fill=self.clrs[self.node_clr], outline=self.outline_clr, width=self.line_width)
         self.draw.ellipse(tuple(map(int, (x1, y1, x2, y2))), fill=self.clrs[self.node_clr], outline=self.outline_clr, width=self.line_width)
-        self.drawFont(tuple(map(int, pos)), root.val)
+        self.drawFont(tuple(map(int, (x1, y1))), root.val)
+#         self.drawPoint((x1, y1))
     
     def drawLine(self, point1, point2):
         self.draw.line(tuple(map(int, (*point1, *point2))), fill=self.clrs[self.outline_clr], width=self.line_width)
     
     def drawFont(self, pos, string):
         string = str(string)
-        if len(string) > 6: string = string[:4] + '..'
+        if len(string) > self.max_chrs: string = string[:4] + '..'
         font = ImageFont.truetype("arial", self.font_size)
         W, H = pos
         w, h = self.draw.textsize(string)
-        v = 0.32 if self.font_size == 100 else 0.67
-        self.draw.text(tuple(map(int, (W - w*self.factor*v, H - h*self.factor*v))), string, fill=self.font_clr, font=font)
+        w *= 12
+        h *= 12
+        a, b = self.node_size
+#         self.drawPoint((W + (a-w)/2, H + (b-h)/2))
+        self.draw.text(tuple(map(int, (W + (a-w)/2, H + (b-h)/2))), string, fill=self.font_clr, font=font)
     
     def drawTree(self, color='white'):
         self.node_clr = color if color in self.clrs else 'white'
-        self.height, right, left = self.getDimension()
-        bg_width = max(self.bg_size[0], self.node_size[1]*1.4*(right - left + 4))
-        bg_height = max(self.bg_size[1], self.node_size[0]*1.4*self.height)
         
-        self.bg_size = (int(bg_width), int(bg_height))
-        self.resize = (int(bg_width/self.factor), int(bg_height/self.factor))
         self.image = Image.new('RGBA', self.bg_size, self.bg_clr)
         self.draw = ImageDraw.Draw(self.image)
         
-        q = deque([(self.root, 1)])
+        self.setNodePos(self.root)
+        self.drawEdges(self.root)
+        self.drawNodes(self.root)
         
-        # fill node_map
-        max_chr = 0
-        while q:
-            node, l = q.popleft()
-            if node:
-                self.node_map[l] = node
-                q.append((node.left, 2*l))
-                q.append((node.right, 2*l + 1))
-                
-                max_chr = max(max_chr, len(str(node.val)))
-                
-        if max_chr >= 4:
-            self.font_size = 130
-          
-        # draw edges
-        for i in self.node_map:
-            node = self.node_map[i]
-            if node:
-                if (2*i) in self.node_map: 
-                    self.drawLine(self.getPosOnSheet(i),self.getPosOnSheet(2*i))
-                
-                if (2*i + 1) in self.node_map:
-                    self.drawLine(self.getPosOnSheet(i),self.getPosOnSheet(2*i + 1))
+        area = (self.left-self.node_size[0], self.top - self.node_size[0], 
+                self.right + self.node_size[0], self.bottom + self.node_size[0])
+        self.image = self.image.crop(area)
         
-        # draw nodes
-        for i in self.node_map:
-            node = self.node_map[i]
-            if node:
-                self.drawNode(node, self.getPosOnSheet(i))
-
+        width, height = area[2] - area[0], area[3] - area[1]
+        if self.size:
+            factor = self.size[0]/width
+            self.resize = (width * factor, height*factor)
+        else:
+            self.resize = (500, 300)
+            
+        self.resize = tuple(map(int, self.resize))
         self.image = self.image.resize(self.resize, resample=Image.ANTIALIAS)
         self.image.save('tree.png')
         return self.image
     
-    def getPos(self, i):
-        return (i - 2**(ceil(log2(i+1))-1), ceil(log2(i+1))-1)
+    def setNodePos(self, root):
+        if root is None: return
+        self.starty += self.node_size[1]*1.1
+        self.setNodePos(root.left)
+        
+        self.nodemap[root] = (self.startx, self.starty, root)
+        
+        self.left = min(self.left, self.startx)
+        self.right = max(self.right, self.startx)
+        self.top = min(self.top, self.starty)
+        self.bottom = max(self.bottom, self.starty)
+        
+        self.startx += self.node_size[1]*0.55
+        
+        self.setNodePos(root.right)
+        self.starty -= self.node_size[1]*1.1
+        
+    def drawEdges(self, root, last=None):
+        if root is None: return
+        self.drawEdges(root.left, root)
+        
+        if last in self.nodemap:
+            self.drawLine(self.nodemap[root][:-1], self.nodemap[last][:-1])
+            
+        self.drawEdges(root.right, root)
+            
     
-    def getPosOnSheet(self, i):
-        w, h = self.getPos(i)
-        
-        bg_width, bg_height = self.bg_size
-        space_x = self.node_size[0]/2
-        space_y = self.node_size[1]/2
-        
-        posx = space_x/4 + (w/2**h)*(bg_width - 0.5*space_x) + ((bg_width - 0.5*space_x) - ((2**h - 1)/2**h)*(bg_width - 0.5*space_x))/2
-        posy = space_y*2 + (h/(self.height+1))*(bg_height)
-        
-        return (posx, posy)
-        
-    def getDimension(self):
-        root = self.root
-        
-        def dfs(root, h=0, l=0, r=0):
-            if root is None: return h, l, r
-            h1, r1, l1 = dfs(root.left, h+1, l+1, r-1)
-            h2, r2, l2 = dfs(root.right, h+1, l-1, r+1)
-            return max(h1, h2), max(r1, r2), min(l1, l2)
-        
-        return dfs(self.root)
-
+    def drawNodes(self, root):
+        for node in self.nodemap:
+            self.drawNode(self.nodemap[node][-1], self.nodemap[node][:-1])
+    
+    def getHeight(self, root):
+        if root is None: return 0
+        return 1 + max(self.getHeight(root.left), self.getHeight(root.right))
     
 def jdraw(root):
     return DrawTree(root, (300, 300)).drawTree()
