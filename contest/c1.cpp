@@ -36,6 +36,12 @@ int main() {
 	#endif
 	// Code here ------------------------
 	
+	int arr[] = {3,2,1};
+	sort(arr, arr+3);
+	cout<<arr[0]<<" "<<arr[1]<<" "<<arr[2]<<endl;
+	cout<<pow(2, 10);
+
+
 	cout<<"working";
 
 	// ----------------------------------
