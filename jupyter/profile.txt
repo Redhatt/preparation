@@ -1,34 +1,17 @@
-Fri Mar 25 00:48:49 2022    profile.prof
+Sat Mar 26 23:29:44 2022    profile.prof
 
-         153513 function calls (112761 primitive calls) in 7.160 seconds
+         8 function calls in 0.000 seconds
 
    Ordered by: internal time
 
    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-     2796    5.978    0.002    5.978    0.002 {built-in method nt.lstat}
-     2797    0.633    0.000    0.633    0.000 {built-in method nt.scandir}
-17227/2797    0.250    0.000    7.026    0.003 {built-in method builtins.next}
-26325/2799    0.096    0.000    7.023    0.003 =\lib\os.py:344(_walk)
-   2797/1    0.068    0.000    7.160    7.160 C:\Users\DANISH~1.AMI\AppData\Local\Temp/ipykernel_22352/785566928.py:8(Tree_)
-     8389    0.034    0.000    0.043    0.000 =\lib\ntpath.py:124(splitdrive)
-     2797    0.026    0.000    0.061    0.000 =\lib\ntpath.py:180(split)
-     2796    0.019    0.000    0.040    0.000 =\lib\ntpath.py:77(join)
-     2796    0.014    0.000    5.996    0.002 =\lib\ntpath.py:228(islink)
-    13981    0.005    0.000    0.005    0.000 {built-in method builtins.isinstance}
-     2797    0.005    0.000    0.066    0.000 =\lib\ntpath.py:214(basename)
-    11633    0.005    0.000    0.005    0.000 {method 'is_dir' of 'nt.DirEntry' objects}
-     8388    0.004    0.000    0.004    0.000 {method 'replace' of 'str' objects}
-    13983    0.004    0.000    0.004    0.000 {built-in method nt.fspath}
-    11633    0.003    0.000    0.003    0.000 {method 'append' of 'list' objects}
-     2797    0.003    0.000    0.006    0.000 =\lib\ntpath.py:34(_get_bothseps)
-    11186    0.003    0.000    0.003    0.000 {built-in method builtins.len}
-     2796    0.003    0.000    0.003    0.000 {built-in method _stat.S_ISLNK}
-     2797    0.002    0.000    0.002    0.000 {method '__exit__' of 'nt.ScandirIterator' objects}
-     2797    0.002    0.000    0.002    0.000 {method 'rstrip' of 'str' objects}
-        1    0.000    0.000    7.160    7.160 C:\Users\DANISH~1.AMI\AppData\Local\Temp/ipykernel_22352/785566928.py:5(Tree)
-        1    0.000    0.000    0.000    0.000 =\lib\os.py:282(walk)
-        1    0.000    0.000    0.000    0.000 =\lib\cProfile.py:117(__exit__)
-        1    0.000    0.000    0.000    0.000 {built-in method sys.audit}
+        1    0.000    0.000    0.000    0.000 {built-in method nt.scandir}
+        1    0.000    0.000    0.000    0.000 =\lib\cProfile.py:133(__exit__)
+        1    0.000    0.000    0.000    0.000 =\lib\os.py:280(walk)
+        1    0.000    0.000    0.000    0.000 <ipython-input-1-a04e55f6710e>:5(Tree)
+        1    0.000    0.000    0.000    0.000 <ipython-input-1-a04e55f6710e>:8(Tree_)
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.next}
+        1    0.000    0.000    0.000    0.000 {built-in method nt.fspath}
         1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
 
 
