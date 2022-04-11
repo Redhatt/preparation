@@ -1,0 +1,17 @@
+Sat Mar 26 23:29:44 2022    profile.prof
+
+         8 function calls in 0.000 seconds
+
+   Ordered by: internal time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.000    0.000 {built-in method nt.scandir}
+        1    0.000    0.000    0.000    0.000 =\lib\cProfile.py:133(__exit__)
+        1    0.000    0.000    0.000    0.000 =\lib\os.py:280(walk)
+        1    0.000    0.000    0.000    0.000 <ipython-input-1-a04e55f6710e>:5(Tree)
+        1    0.000    0.000    0.000    0.000 <ipython-input-1-a04e55f6710e>:8(Tree_)
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.next}
+        1    0.000    0.000    0.000    0.000 {built-in method nt.fspath}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
+

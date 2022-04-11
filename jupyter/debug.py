@@ -1,5 +1,11 @@
 import sys
 import time
+import cProfile, pstats
+from io import StringIO
+import os
+
+profileFile = "profile.prof"
+profileFiletxt = "profile.txt"
 
 def timit(func):
     """
@@ -25,8 +31,8 @@ Actual Example.
     return wrap
 
 store = (set, list, tuple, dict, zip)
-def printrec(a, space=0, d=2, first=True, prefix=""):
-    under = False
+def printrec(a, space=0, d=2, first=True, prefix="", line=False):
+    under = line
     if isinstance(a, store):
         if isinstance(a, dict):
             for i in a.values():
@@ -36,45 +42,45 @@ def printrec(a, space=0, d=2, first=True, prefix=""):
                 if isinstance(i, store): under = True; break
         if under:
             if isinstance(a, list):
-                print(" "*(space) + prefix + '[')
+                print(" "*(space) + prefix + '(' + str(len(a)) + ')' + '[')
                 space+=len(prefix)
                 for i in a:
-                    printrec(i, space=space+d, d=d, first=False)
+                    printrec(i, space=space+d, d=d, first=False, line=line)
                 if first: print(" "*(space) + ']')
                 else: print(" "*(space) + '],\n')
 
             elif isinstance(a, tuple):
-                print(" "*(space) + prefix + '(')
+                print(" "*(space) + prefix + '(' + str(len(a)) + ')' +'(')
                 space+=len(prefix)
                 for i in a:
-                    printrec(i, space=space+d, d=d, first=False)
+                    printrec(i, space=space+d, d=d, first=False, line=line)
                 if first: print(" "*(space) + ')')
                 else: print(" "*(space) + '),\n')
 
             elif isinstance(a, set):
-                print(" "*(space) + prefix + '{')
+                print(" "*(space) + prefix + '(' + str(len(a)) + ')' +'{')
                 space+=len(prefix)
                 for i in a:
-                    printrec(i, space=space+d, d=d, first=False)
+                    printrec(i, space=space+d, d=d, first=False, line=line)
                 if first: print(" "*(space) + '}')
                 else: print(" "*(space) + '},\n')
 
             elif isinstance(a, dict):
-                print(" "*(space) + prefix + '{')
+                print(" "*(space) + prefix + '(' + str(len(a)) + ')' +'{')
                 space+=len(prefix)
                 for k,v in a.items():
-                    printrec(v, space=space+d, d=d, first=False, prefix=f"{repr(k)}: ")
+                    printrec(v, space=space+d, d=d, first=False, prefix=f"{repr(k)}: ", line=line)
                 if first: print(" "*(space) + '}')
                 else: print(" "*(space) + '},\n')
             elif isinstance(a, zip):
-                print(" "*(space) + prefix + '|<')
+                print(" "*(space) + prefix + '(' + str(len(tuple(a))) + ')' +'|<')
                 space+=len(prefix)
                 for i in a:
-                    printrec(i, space=space+d, d=d, first=False)
+                    printrec(i, space=space+d, d=d, first=False, line=line)
                 if first: print(" "*(space) + '>|')
                 else: print(" "*(space) + '>|,\n')
         else:
-            print(f'{" "*(space)+prefix}{a}', end=",\n")
+            print(f'{" "*(space)+prefix+"("+str(len(a))+")"}{a}', end=",\n")
     else: print(f'{" "*(space+ (1 if prefix=="" else 0))+prefix}{repr(a)}', end=",\n")
 
 def debug(**kwargs):
@@ -82,28 +88,35 @@ def debug(**kwargs):
             debug
 A debug function to print variable and objects in a nice and understandable format.
 @params: keyWordArguments
+@params: line, to print every element of iterable object in new line
 @print -> variable_name_passed : variable_referenced_value
 For more understanding run debug.py and check examples in main.
     """
     print("_____________________")
+    if 'line' in kwargs:
+        line = kwargs['line']
+        kwargs.pop('line')
+    else:
+        line = False
+
     for i, j in kwargs.items():
         print(">", end="")
         if isinstance(j, list) or isinstance(j, tuple):
             if j and isinstance(j[0], store):
-                print(f"{i} = {len(j), len(j[0])}")
-                printrec(j, space=1)
+                print(f"{i} = {type(j)}")
+                printrec(j, space=1, line=line)
             else:
-                print(f"{i} = ({len(j)})")
-                printrec(j, space=1)
+                print(f"{i} = {type(j)}")
+                printrec(j, space=1, line=line)
         elif isinstance(j, set):
-            print(f"{i} = ({len(j)})")
-            printrec(j, space=1)
+            print(f"{i} = {type(j)}")
+            printrec(j, space=1, line=line)
         elif isinstance(j, dict):
-            print(f"{i} = ({len(j)})")
-            printrec(j, space=1)
+            print(f"{i} = {type(j)}")
+            printrec(j, space=1, line=line)
         elif isinstance(j, zip):
             print(f"{i} = (zip)")
-            printrec(j, space=1)
+            printrec(j, space=1, line=line)
         else:
             if i == 'Time':
                 print(f"||{i} = {j}||")
@@ -155,18 +168,51 @@ def no2words(num):
         return s
     return " ".join(convert(num))
 
+def header(heading, l=50):
+    print("*"*l)
+    print("*"*((l-len(heading))//2) + heading + "*"*((l-len(heading))//2))
+    print("*"*l)
+
+def profile(f, *args, **kwargs):
+    with cProfile.Profile() as pr:
+        ans = f(*args, **kwargs)
+        
+    stats = pstats.Stats(pr)
+    stats.dump_stats(profileFile)
+
+    stream = StringIO()
+    stats = pstats.Stats(profileFile, stream=stream)
+    stats.sort_stats(pstats.SortKey.TIME)
+
+    stats.print_stats()
+    stream.seek(0)
+    data = stream.read()
+
+    base = os.path.dirname(sys.executable)
+    cwd = os.getcwd()
+
+    data = data.replace(base, "=")
+    data = data.replace(cwd, "~")
+    
+    myText = open(profileFiletxt, 'w')
+    myText.write(data)
+    myText.close()
+    
+    return data, ans
+    
+
 
 if __name__ == "__main__":
     x = 1
     y = '2'
     z = [1,2,3,4]
-    a = [[0,0,0],[1,1,1],[2,2,2]]    
+    a = [[0,0,0],[1,1,1],[2,2,2]]   
     c = {1:[1,2,3], 2: 3}
     d = [[[{'a': 2, 'b': 3}, (1,2,3), ['a','b','c']],1,2,3,4], {1:1, 2:2, 3:3, 4:4}, (1,2,3,4), 'a']
     e = ['q',{'a':{1: '11', 2: 22, 3: 33, 4:{'r': 23, 's': 45}}, 'b': [1,2,3,4], 1: ('asd', 'car')},'2',3]
     f = {'distance': 1024,'name': 'danish','type': {'a': 1, 'b': 2, 'c': 3, 'd': [[1,2,3], [4,5,6]]},4: (1,2,3)}
     g = {'zip1': zip((1,2,3,4), (6,7,8,9))}
-    debug(x=x, y=y, z=z, a=a, d=d, e=e, f=f, g=g)
+    debug(x=x, y=y, z=z, a=a, d=d, e=e, f=f, g=g, line=True)
     no2words(12345)  # @pr and no2words use
     frmt(123456789)  # @pr and frmt use
     
