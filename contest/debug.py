@@ -4,8 +4,8 @@ import cProfile, pstats
 from io import StringIO
 import os
 
-sys.stdin=open('input.txt','r')
-sys.stdout=open('output.txt','w')
+sys.stdin=open('input.txt','r', encoding="utf-8")
+sys.stdout=open('output.txt','w', encoding="utf-8")
 profileFile = "profile.prof"
 profileFiletxt = "profile.txt"
 

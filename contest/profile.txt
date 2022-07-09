@@ -1,0 +1,19 @@
+Thu Apr 14 17:59:25 2022    profile.prof
+
+         12826368 function calls in 12.815 seconds
+
+   Ordered by: internal time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+  1924002    4.634    0.000    4.634    0.000 {built-in method builtins.pow}
+  1281600    3.172    0.000    8.512    0.000 ~\contest02.py:32(rollHash)
+  3205602    1.951    0.000    2.860    0.000 ~\contest02.py:23(<lambda>)
+     1602    1.110    0.001    3.264    0.002 ~\contest02.py:25(getHash)
+        1    1.039    1.039   12.815   12.815 ~\contest02.py:16(distinctEchoSubstrings)
+  6411204    0.910    0.000    0.910    0.000 {built-in method builtins.ord}
+     1603    0.001    0.000    0.001    0.000 {built-in method builtins.len}
+      752    0.000    0.000    0.000    0.000 {method 'add' of 'set' objects}
+        1    0.000    0.000    0.000    0.000 =\lib\cProfile.py:117(__exit__)
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
+
