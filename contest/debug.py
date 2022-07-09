@@ -211,7 +211,7 @@ if __name__ == "__main__":
     e = ['q',{'a':{1: '11', 2: 22, 3: 33, 4:{'r': 23, 's': 45}}, 'b': [1,2,3,4], 1: ('asd', 'car')},'2',3]
     f = {'distance': 1024,'name': 'danish','type': {'a': 1, 'b': 2, 'c': 3, 'd': [[1,2,3], [4,5,6]]},4: (1,2,3)}
     g = {'zip1': zip((1,2,3,4), (6,7,8,9))}
-    debug(x=x, y=y, z=z, a=a, d=d, e=e, f=f, g=g, line=True)
+    debug(x=x, y=y, z=z, a=a, d=d, e=e, f=f, g=g, line=False)
     no2words(12345)  # @pr and no2words use
     frmt(123456789)  # @pr and frmt use
     

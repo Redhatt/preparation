@@ -1,65 +1,35 @@
-# from debug import *
-import sys
-from math import log2, ceil
+from debug import *
 
-input = sys.stdin.readline
 
-n, q = map(int, input().split())
-K = 1 + ceil(log2(n))
-N = n + 1
+a = [ 194, 195, 196, 197, 198, 199, 201, 203, 204, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22, 23, 24, 25, 26, 27, 29, 30, 31, 32, 33, 34, 35, 36, 37, 39, 40, 42, 43, 44, 45, 47, 48, 49, 50, 51, 52, 53, 54, 55, 57, 58, 59, 60, 61, 63, 65, 66, 68, 69, 70, 71, 73, 74, 76, 77, 79, 80, 81, 82, 83, 84, 86, 87, 88, 89, 91, 92, 93, 94, 95, 97, 98, 99, 101, 103, 104, 105, 106, 107, 108, 109, 110, 113, 114, 115, 117, 118, 120, 121, 122, 123, 124, 127, 128, 130, 131, 133, 134, 135, 136, 137, 139, 140, 141, 142, 143, 144, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 158, 159, 160, 161, 162, 163, 164, 166, 167, 169, 170, 171, 172, 174, 175, 177, 178, 179, 181, 182, 184, 185, 187, 189, 190, 192, 193 ]
 
-inn, out, level = [0]*N, [0]*N, [0]*N
-graph = [[] for i in range(N)]
-up = [[-1]*K for i in range(N)]
+@pr
+def search(A, B):
+    from bisect import bisect
+    n = len(A)
+    low, high = 0, n-1
+    while low < high:
+        mid = (low + high + 1)//2
 
-def dfs(node: int, parent: int, time: int) -> int:
-    stack = [(node, parent, 0, 0)]
-    time = 0
-    while stack:
-        node, parent, depth, location = stack.pop()
-        if location == 0:
-            time += 1
-            inn[node] = time
-            up[node][0] = parent
-            level[node] = depth
+        debug(low=low, mid=mid, high=high, a=A[low], b = A[mid], c = A[high])
 
-            stack.append((node, parent, depth, 1))
-
-            for k in range(1, K):
-                if up[node][k-1] == -1: break
-                up[node][k] = up[up[node][k-1]][k-1]
-
-            for nbr in graph[node]:
-                if nbr == parent: continue
-                stack.append((nbr, node, depth+1, 0))
+        if A[low] <= A[mid]:
+            low = mid
         else:
-            time += 1
-            out[node] = time
+            high = mid - 1
 
-def getDis(u, v):
-    if (inn[u]<=inn[v]) and (out[u]>=out[v]): 
-        ancestor = u
+    print(">>", low)
+    index = low
 
-    elif ((inn[v]<=inn[u]) and (out[v]>=out[u])):
-        ancestor = v
+    v1 = bisect(A, B, 0, index)-1
+    if v1 >= 0 and A[v1] == B:
+        return v1
+    
+    v2 = bisect(A, B, index+1, n)-1         
+    if v2 >= 0 and A[v2] == B:
+        return v2
+    
+    return -1
 
-    else:
-        for k in reversed(range(K)):
-            t = up[u][k]
-            if t != -1 and not ((inn[t]<=inn[v]) and (out[t]>=out[v])):
-                u = t
-
-        ancestor = up[u][0]
-
-    return abs(level[ancestor] - level[u]) + abs(level[ancestor] - level[v])
-
-for _ in range(n-1):
-    u, v = map(int, input().split())
-    graph[u].append(v)
-    graph[v].append(u)
-
-dfs(1, -1, 0)
-
-for i in range(q):
-    u, v = map(int, input().split())
-    print(getDis(u, v))
+# a =[2,3,4,1]
+search(a, 1)

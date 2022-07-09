@@ -1,6 +1,69 @@
-null
-null
-True
-True
-False
-False
+_____________________
+>low = 0, (<class 'int'>)
+>mid = 81, (<class 'int'>)
+>high = 162, (<class 'int'>)
+>a = 194, (<class 'int'>)
+>b = 87, (<class 'int'>)
+>c = 193, (<class 'int'>)
+---------------------
+_____________________
+>low = 0, (<class 'int'>)
+>mid = 40, (<class 'int'>)
+>high = 80, (<class 'int'>)
+>a = 194, (<class 'int'>)
+>b = 35, (<class 'int'>)
+>c = 86, (<class 'int'>)
+---------------------
+_____________________
+>low = 0, (<class 'int'>)
+>mid = 20, (<class 'int'>)
+>high = 39, (<class 'int'>)
+>a = 194, (<class 'int'>)
+>b = 13, (<class 'int'>)
+>c = 34, (<class 'int'>)
+---------------------
+_____________________
+>low = 0, (<class 'int'>)
+>mid = 10, (<class 'int'>)
+>high = 19, (<class 'int'>)
+>a = 194, (<class 'int'>)
+>b = 2, (<class 'int'>)
+>c = 12, (<class 'int'>)
+---------------------
+_____________________
+>low = 0, (<class 'int'>)
+>mid = 5, (<class 'int'>)
+>high = 9, (<class 'int'>)
+>a = 194, (<class 'int'>)
+>b = 199, (<class 'int'>)
+>c = 1, (<class 'int'>)
+---------------------
+_____________________
+>low = 5, (<class 'int'>)
+>mid = 7, (<class 'int'>)
+>high = 9, (<class 'int'>)
+>a = 199, (<class 'int'>)
+>b = 203, (<class 'int'>)
+>c = 1, (<class 'int'>)
+---------------------
+_____________________
+>low = 7, (<class 'int'>)
+>mid = 8, (<class 'int'>)
+>high = 9, (<class 'int'>)
+>a = 203, (<class 'int'>)
+>b = 204, (<class 'int'>)
+>c = 1, (<class 'int'>)
+---------------------
+_____________________
+>low = 8, (<class 'int'>)
+>mid = 9, (<class 'int'>)
+>high = 9, (<class 'int'>)
+>a = 204, (<class 'int'>)
+>b = 1, (<class 'int'>)
+>c = 1, (<class 'int'>)
+---------------------
+>> 8
+_____________________
+>func_name = search, (<class 'str'>)
+>returned = 9, (<class 'int'>)
+---------------------
