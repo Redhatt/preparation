@@ -4,8 +4,8 @@ import cProfile, pstats
 from io import StringIO
 import os
 
-profileFile = "profile.prof"
-profileFiletxt = "profile.txt"
+profileFile = "zprofile.prof"
+profileFiletxt = "zprofile.txt"
 
 def timit(func):
     """

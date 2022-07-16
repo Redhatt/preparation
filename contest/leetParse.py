@@ -1,50 +1,95 @@
 from debug import *
 import json
+from collections import defaultdict
 
 JI = lambda : json.loads(input().strip())
 
 
 ###########################
-class MagicDictionary:
-
+class Node:
     def __init__(self):
-        self.root = dict()
+        self.key = 0
+        self.value = 0
+        self.n = None
+        self.p = None
 
-    def buildDict(self, dictionary: list) -> None:
-        for word in dictionary:
-            node = self.root
-            for char in word:
-                node = node.setdefault(char, dict())
-            node['#'] = True
-    
-    def search(self, searchWord: str) -> bool:
-        def search_(node, word, skip):
-            if word == "":
-                return node.get('#', False) and skip == 0
-            
-            if skip < 0:
-                return False
-            
-            for char in node:
-                if char == '#':
-                    continue
-                elif char == word[0] and search_(node[char], word[1:], skip):
-                    return True
-                elif search_(node[char], word[1:], skip-1):
-                    return True
-            
-            return False
-        return search_(self.root, searchWord, 1)
+    def __repr__(self):
+        return f"[k:{self.key}, v:{self.value}]"
         
-# Your MagicDictionary object will be instantiated and called as such:
-# obj = MagicDictionary()
-# obj.buildDict(dictionary)
-# param_2 = obj.search(searchWord)
+class List:
+    def __init__(self):
+        self.head, self.tail = Node(), Node()
+        self.head.n, self.tail.p = self.tail, self.head
+        
+    def remove(self, node):
+        before, after = node.p, node.n
+        before.n, after.p = after, before
+        
+    def popleft(self):
+        if self.head.n == self.tail:
+            return 
+        self.remove(self.head.n)
 
+    def append(self, node):
+        before, after = self.tail.p, self.tail
+        before.n, node.p, node.n, after.p = node, before, after, node
+
+    def __repr__(self):
+        s = ""
+        node = self.head.n
+        while node != self.tail:
+            s += node.__repr__() + ", "
+            node = node.n
+        return '(' + s[:-1] + ')'
+
+class LRUCache:
+
+    def __init__(self, capacity: int):
+        self.c = capacity
+        self.index = defaultdict(Node)
+        self.recent = List()
+        
+    def _get(self, key):
+        if key not in self.index:
+            return None
+        
+        node = self.index[key]
+        self.recent.remove(node)
+        self.recent.append(node)
+        return node
+
+    def get(self, key: int) -> int:
+        node = self._get(key)
+        debug(r=self.recent)
+        return node.value if node else -1
+            
+    def put(self, key: int, value: int) -> None:
+        # print(self.recent)
+        if self.c == 0:
+            return 
+        
+        node = self._get(key)
+        if node:
+            node.value = value
+            return 
+        
+        if len(self.index) == self.c:
+            self.recent.popleft()
+            self.index.pop(key)
+        
+        node = self.index[key]
+        node.key, node.value = key, value
+        self.recent.append(node)
+        debug(r=self.recent)
+
+
+
+# Your LRUCache object will be instantiated and called as such:
+# obj = LRUCache(capacity)
+# param_1 = obj.get(key)
+# obj.put(key,value)
 
 ###########################
-
-
 #==============================================
 
 
@@ -55,11 +100,11 @@ a, b = JI(), JI()
 obj = None
 
 for x, y in zip(a, b):
-	if x == "MagicDictionary":
-		obj = MagicDictionary()
-		print("null")
-	elif x == "buildDict":
-		obj.buildDict(*y)
-		print("null")
-	elif x == "search":
-		print(obj.search(*y))
+    temp = "null"
+    if x == "LRUCache":
+        obj = LRUCache(*y)
+    elif x == "get":
+        temp = obj.get(*y)
+    elif x == "put":
+        obj.put(*y)
+    print(temp)

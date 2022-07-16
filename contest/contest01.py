@@ -1,35 +1,20 @@
 from debug import *
+from bisect import *
 
 
-a = [ 194, 195, 196, 197, 198, 199, 201, 203, 204, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22, 23, 24, 25, 26, 27, 29, 30, 31, 32, 33, 34, 35, 36, 37, 39, 40, 42, 43, 44, 45, 47, 48, 49, 50, 51, 52, 53, 54, 55, 57, 58, 59, 60, 61, 63, 65, 66, 68, 69, 70, 71, 73, 74, 76, 77, 79, 80, 81, 82, 83, 84, 86, 87, 88, 89, 91, 92, 93, 94, 95, 97, 98, 99, 101, 103, 104, 105, 106, 107, 108, 109, 110, 113, 114, 115, 117, 118, 120, 121, 122, 123, 124, 127, 128, 130, 131, 133, 134, 135, 136, 137, 139, 140, 141, 142, 143, 144, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 158, 159, 160, 161, 162, 163, 164, 166, 167, 169, 170, 171, 172, 174, 175, 177, 178, 179, 181, 182, 184, 185, 187, 189, 190, 192, 193 ]
 
-@pr
-def search(A, B):
-    from bisect import bisect
-    n = len(A)
-    low, high = 0, n-1
-    while low < high:
-        mid = (low + high + 1)//2
+def spiralOrder(A):
+    if not A: return []
+    return [*A[0]] + spiralOrder([k[0] for k in zip(i[::-1] for i in A)][1:])
 
-        debug(low=low, mid=mid, high=high, a=A[low], b = A[mid], c = A[high])
 
-        if A[low] <= A[mid]:
-            low = mid
-        else:
-            high = mid - 1
 
-    print(">>", low)
-    index = low
+A = [[10*i + 4*j for j in range(5)] for i in range(5)]
 
-    v1 = bisect(A, B, 0, index)-1
-    if v1 >= 0 and A[v1] == B:
-        return v1
-    
-    v2 = bisect(A, B, index+1, n)-1         
-    if v2 >= 0 and A[v2] == B:
-        return v2
-    
-    return -1
+debug(b=A)
+debug(a=[k for k in zip(*[i[::-1] for i in A])])
+# s = spiralOrder(A)
+# print(s)
 
-# a =[2,3,4,1]
-search(a, 1)
+
+print(*zip((12,3,4), (3,4,5)))
