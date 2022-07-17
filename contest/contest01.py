@@ -1,20 +1,26 @@
 from debug import *
-from bisect import *
+import sys
+sys.setrecursionlimit(10**5)
+
+I =  lambda :int(input())
+L = lambda :list(map(int, input().split()))
+T = lambda :map(int, input().split())
+mod = int(1e9) + 7
 
 
 
-def spiralOrder(A):
-    if not A: return []
-    return [*A[0]] + spiralOrder([k[0] for k in zip(i[::-1] for i in A)][1:])
+n, k = T()
+lis = L()
 
 
+def rec(i, s):
+    if s<0: return 0
+    if i == n:
+        return s == 0
 
-A = [[10*i + 4*j for j in range(5)] for i in range(5)]
+    ans = 0
+    for p in range(lis[i]+1):
+        ans += rec(i+1, s-p)
+    return ans
 
-debug(b=A)
-debug(a=[k for k in zip(*[i[::-1] for i in A])])
-# s = spiralOrder(A)
-# print(s)
-
-
-print(*zip((12,3,4), (3,4,5)))
+print(rec(0, k))
