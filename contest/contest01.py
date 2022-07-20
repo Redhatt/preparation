@@ -1,6 +1,4 @@
 from debug import *
-import sys
-sys.setrecursionlimit(10**5)
 
 I =  lambda :int(input())
 L = lambda :list(map(int, input().split()))
@@ -8,19 +6,23 @@ T = lambda :map(int, input().split())
 mod = int(1e9) + 7
 
 
-
-n, k = T()
+N, K = T()
 lis = L()
 
+dp = [0]*(K+1)
+dp[0] = 1
 
-def rec(i, s):
-    if s<0: return 0
-    if i == n:
-        return s == 0
+for i in range(1, N+1):
+    
+    s = [0]*(K+1)
+    s[0] = dp[0]
+    for k in range(1, K+1):
+        s[k] = (s[k-1] + dp[k])%mod
 
-    ans = 0
-    for p in range(lis[i]+1):
-        ans += rec(i+1, s-p)
-    return ans
+    for k in range(K+1):
+        if k<=lis[i-1]:
+            dp[k] = s[k]
+        else:
+            dp[k] = s[k] - s[k-lis[i-1]-1]
 
-print(rec(0, k))
+print(dp[-1]%mod)
