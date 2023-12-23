@@ -44,45 +44,45 @@ def printrec(a, space=0, d=2, first=True, prefix="", line=False):
                 if isinstance(i, store): under = True; break
         if under:
             if isinstance(a, list):
-                print(" "*(space) + prefix + '(' + str(len(a)) + ')' + '[')
+                print(" "*(space) + prefix + '(' + str(len(a)) + ')' + " "*(2-len(str(len(a)))) + '[')
                 space+=len(prefix)
-                for i in a:
-                    printrec(i, space=space+d, d=d, first=False, line=line)
+                for index, i in enumerate(a):
+                    printrec(i, space=space+d, d=d, first=False, prefix=f"{index}. "+" "*(len(str(len(a)))-len(str(index))), line=line)
                 if first: print(" "*(space) + ']')
                 else: print(" "*(space) + '],\n')
 
             elif isinstance(a, tuple):
-                print(" "*(space) + prefix + '(' + str(len(a)) + ')' +'(')
+                print(" "*(space) + prefix + '(' + str(len(a)) + ')' + " "*(2-len(str(len(a)))) +'(')
                 space+=len(prefix)
-                for i in a:
-                    printrec(i, space=space+d, d=d, first=False, line=line)
+                for index, i in enumerate(a):
+                    printrec(i, space=space+d, d=d, first=False, prefix=f"{index}. "+" "*(len(str(len(a)))-len(str(index))), line=line)
                 if first: print(" "*(space) + ')')
                 else: print(" "*(space) + '),\n')
 
             elif isinstance(a, set):
-                print(" "*(space) + prefix + '(' + str(len(a)) + ')' +'{')
+                print(" "*(space) + prefix + '(' + str(len(a)) + ')' + " "*(2-len(str(len(a)))) +'{')
                 space+=len(prefix)
-                for i in a:
-                    printrec(i, space=space+d, d=d, first=False, line=line)
+                for index, i in enumerate(a):
+                    printrec(i, space=space+d, d=d, first=False, prefix=f"{index}. "+" "*(len(str(len(a)))-len(str(index))), line=line)
                 if first: print(" "*(space) + '}')
                 else: print(" "*(space) + '},\n')
 
             elif isinstance(a, dict):
-                print(" "*(space) + prefix + '(' + str(len(a)) + ')' +'{')
+                print(" "*(space) + prefix + '(' + str(len(a)) + ')' + " "*(2-len(str(len(a)))) +'{')
                 space+=len(prefix)
                 for k,v in a.items():
                     printrec(v, space=space+d, d=d, first=False, prefix=f"{repr(k)}: ", line=line)
                 if first: print(" "*(space) + '}')
                 else: print(" "*(space) + '},\n')
             elif isinstance(a, zip):
-                print(" "*(space) + prefix + '(' + str(len(tuple(a))) + ')' +'|<')
+                print(" "*(space) + prefix + '(' + str(len(tuple(a))) + ')' + " "*(2-len(str(len(tuple(a))))) +'|<')
                 space+=len(prefix)
-                for i in a:
-                    printrec(i, space=space+d, d=d, first=False, line=line)
+                for index, i in enumerate(a):
+                    printrec(i, space=space+d, d=d, first=False, prefix=f"{index}. "+" "*(len(str(len(a)))-len(str(index))), line=line)
                 if first: print(" "*(space) + '>|')
                 else: print(" "*(space) + '>|,\n')
         else:
-            print(f'{" "*(space)+prefix+"("+str(len(a))+")"}{a}', end=",\n")
+            print(f'{" "*(space)+prefix+"("+str(len(a))+")" + " "*(2-len(str(len(a))))}{a}', end=",\n")
     else: print(f'{" "*(space+ (1 if prefix=="" else 0))+prefix}{repr(a)}', end=",\n")
 
 def debug(**kwargs):

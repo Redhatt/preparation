@@ -37,7 +37,6 @@ def updateRange(node, start, end, l ,r, val):
 	if start>r or end<l: return
 
 	if start >= l and end <= r:
-		print(tree[node], val*(end-start+1))
 		tree[node] += val*(end-start+1)
 		if start != end: lazy[2*node] += val; lazy[2*node + 1] += val
 		return

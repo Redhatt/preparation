@@ -5,65 +5,53 @@
 
 from debug import *
 import sys;input = sys.stdin.readline
-import time
+sys.setrecursionlimit(1 + 10**5)
+from collections import deque
 
 I =  lambda :int(input())
 L = lambda :list(map(int, input().split()))
 T = lambda :map(int, input().split())
 mod = int(1e9) + 7
 
-class Solution:
-    def distinctEchoSubstrings(self, text: str) -> int:
-        n = len(text)
-        mod = 7 + 10**9
-        prime = 31
-        ans = 0
-        d = {""}
-        
-        get = lambda x: ord(x) - ord('a') + 1
-        
-        def getHash(s):
-            ans = 0
-            n = len(s)
-            for i, x in enumerate(s):
-                ans = (ans + get(x) * pow(prime, n-1-i))%mod
-            return ans
-        
-        def rollHash(value, size, insert, pop):
-            value = (value - get(pop)*pow(prime, size-1))%mod
-            value = (value*prime + get(insert))%mod
-            return value
-        
-        for half in range(1, 1 + n//2):
-            ah = getHash(text[:half])
-            bh = getHash(text[half:2*half])
-            
-            if ah == bh and ah not in d:
-                d.add(ah)
-                ans += 1
-            
-            start, end = 1, 2*half
-            while end<n:
-                p1 = text[start - 1]
-                i1 = text[start + half - 1]
-                
-                p2 = i1
-                i2 = text[end]
-                
-                ah = rollHash(ah, half, i1, p1)
-                bh = rollHash(bh, half, i2, p2)
-                
-                if ah == bh and ah not in d:
-                    d.add(ah)
-                    ans += 1
-                
-                start += 1
-                end += 1
-        
-        return ans
+
+n, m = T()
+graph = [[] for _ in range(n+1)]
+
+for i in range(m):
+    a, b = T()
+    graph[a].append(b)
+    graph[b].append(a)
 
 
-s = input().strip()
-obj = Solution()
+color = [0]*(n+1)
+ans = deque()
 
-profile(obj.distinctEchoSubstrings, s)
+
+def dfs(node, parent):
+    color[node] = 1
+    ans.append(node)
+    for nbr in graph[node]:
+        if parent == nbr:
+            continue
+        elif color[nbr] == 0 and dfs(nbr, node):
+            return True
+        elif color[nbr] == 1:
+            ans.append(nbr)
+            return True
+    color[node] = 2
+    return False
+
+for i in range(1, n+1):
+    if color[i] == 0 and dfs(i, 0):
+        break
+
+if ans:
+    while ans[-1] != ans[0]:
+        ans.popleft()
+
+    print(len(ans))
+    print(*ans)
+else:
+    print("IMPOSSIBLE")
+
+

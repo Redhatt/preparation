@@ -1,0 +1,225 @@
+Q. Tell me about a time when you had to learn and complete the project in a short deadline?
+
+Due to my full stack experience, I was asigned to lead user interface for drone flight manamgenent at Crystalball. The initial parts were written using QT Framework, whichwas very different from what I have done with Django.
+
+Qt framework is robust but has a disadvantage of steep learning curve. And the user interface was really complex. It has to support geolocation data visualisation, running javascripts and html to integrate Opensource API views. I took lead by comming with multiple solutions and iterations to complete it within deadline. To make sure
+that the porject gets completed within the deadline I decided to take feedaback as quick as possible to ensure that the developement is in the right direction.
+
+I also reduce to the initial load by dropping the asthetics and additional features from the user Interface and built mutiple scripts to automate the project builds.
+
+This way I was able to completly learn QT framework while implementing it and delivering the results on time.
+
+
+
+A. When I started to work for the Crystalball team, I was assigned a task to build a User Interface for the Drone Flight Managament system. The framework I was asked to use was Qt framework. Qt framework is huge and robust and has a steep learning curve, since the User Interface was complicated too, I had to deep dive into Qt framework and figure out the solutions to build the User Interface, and with little experince with such project, it was a war of iterations, I have to try out thing multiple time to get to the optimal solution. To reduce to the initial load I dropped the asthetics and additional features from the user Interface, build mutiple scripts to automate the builds of projects. Even then I have to work more than required hours, but finally I was able to deliver the project within deadline.
+A. learn be curious, Deliver result, ownership 
+ 
+Q. tell me about a time when you had multiple works with deadlines.
+A couple of months ago, I was working on a feature to support different thumbnail sizes
+for inventories at JioMart. As sales season was near I was assigned working on top deals available for the customer. 
+
+I was also a part of the team who was resonsible to improve synchronization performance for multiple databases along with monitoring new deployment effects. 
+
+To manage the work I made some soft goals other than the hard deadlines to keep track of of my projects also proiritzed them to not miss any important deadlines. I was constantly taking feedbacks from my leads and teams to get the alignement right. I also have to work few extra hours to collaborate with differnet teams to meet the goals, which resulted the task completed on time before the season sale.
+
+
+A. There has been times where I was assigned multiple tasks, with reletivilty short deadline. For example a couple a months ago, I was working on a new features for the support of thumbnail and banner images for the Ecommerce website JioMart, additionally I was also working on another feature for the topdeals section for the website too, I was also a part of the team who was resonsible to improve synchronization performance for multiple databases, and that week I was responsible to monitor the new deployment too. Clearly I was busy the entire week and have to manage to a lot of work. To work efficiently I made some soft goals other than the hard deadlines to keep track of of my projects also proiritzed them to not miss any important deadlines, I also have to work few extra hours that week to meet the daily goals. By the end the week I completed the projects.
+
+Q. tell me about a time when a project failed due to you?
+A. During my initial month after joining Jio, I was assigned with a task related to thumbnail and banner images, to be precise, I had to correctly map the images for the categoreies like  thumbnail and banner  for the newly introduce verticals, then verfiy thier resolutions and later resize them as per required by bussiness team, finally I had to upload them and send the url to other business team.
+At first glance the task seemed simple to me, so I agreed to submit within a couple of days. But when I started the task I realised I was still unfamilair with the codebase, and there were a lot of unknown qualities. I tried to understand as much as possible, but due to some bad descisions and incorrect approach to the problem, I failed to submit the task. 
+My manager was not really expecting such outcome from my side, but he consider my issue and provided help to get famaliar with the codebase, later that day I spend several hours understanding the codebase and by the end of the next day, I finished the task.
+
+
+A. While working with Crystalball team, I got an urgent and unexpected task to completed quickly. The task was to design a new camera-safty module since old one was not working, since the task was unexpected and urgent, out team didn't have any extra time to hire someone for this project, I had some prior experince with IOT devices and also had the knowledge to integrate it with User Interface I build. So I accepted the task. Due to experince with IOT devices, I was quickly able to implement the feature and itegrate it with User Interface, but deadline was really short and even after working hard and completing the implementation quickly I was left with little time to test the safe mechanism in real time. This turned out to be a mistake, and due to this the safty mechanism failed in a real time flight situation, luckly nothing was harmed. I took the responsibility for the failure and later that day, testing the safty mechanism properly and fixed the issue.
+
+Q. tell me about a time when you were assigend some other project but found severe bug in other project, so waht you did?
+A. Recently Jio launched another E commerce website Express JioMairt for the express delivery. After few weeks of its successful launch, I was assgined a task related top deals feature for the Usual JioMart Website.
+While working on the feature, I was going through the data retriving codebase, and it occured in my mind that this codebase will almost be similar to the one present for Express JioMart website, but requires an aditional conditions related to vertical, and there was a chance that this condition might not be present in the codebase for the express JioMart. 
+After quickly glance through the codebase of express JioMart site, I found that the conditions were not correct. The issue was simple since some of the verticals are not present in Express JioMart we should expilicilty check them. But it was not being checked, and the issue didn't occur while testing because only availble verticals were tested which didn't produce any null values. I quickly addressed this issue to manager, and since the fix was easy, I fixed it myself and recommanded additional test for the testing team to confirm the fix.
+
+Q. tell me about a time when you had a short deadline and more work?
+A. In starting of this year, Jio had a plan to launch a new E commerce website, JioMart Express, since I and my team were responsible for the Inventory Management for JioMart already, we have to build a complete new system for Express too. The good thing was that the architecture was almost similar to JioMart so we could reuse a lot of codebase but still there were hundreds of new feature and changes to be completed.
+I was assigned a lot of tasks which had to be done within short period of time, because others task was also dependent on my task. Since I had a lot thing to manage, it was crucial for me to keep track of every task and to accomplish this I created several soft goals as a measure of progress. Other important aspect was correct prioritization of task since, there were many tasks for which I could only perform testing at a later point of time and other which were urgent for other business team.
+For the first week I had to work extra hours to maintain a proper working, later when thing started to sail smoothly, I just have to be consistant with my soft goals. Finally I was able to deliver the result prior to dealine. 
+
+Q. tell me about a time you missed a deadline?
+A. Few years back, when I started to work with Crystalball team, as my first project I was assigned to build a user interface for Drone Flight managament. The first task was to build a couple of pages for the insterface, back then I had some knowledge on building User Interface and so when I was asked to provide a deadline for the task, I gave them reletivily short deadline. Later while working on the project, small details started to unfold and soon I realized that its not only about implementation of features but also thier intractions with other features, which made the task much more difficult than I expected. To overcome this new issue I have to work few more hours than required and my team also provided em with some external help, I overshooted the deadline but not by a great extent, the quick realization, proper planning and working more hours, healped me to recover the situation. I learned to do a better and in-depth analysis while working on projects and estimation deadlines.
+
+Q. what if your colleagues pushes his ideas to much on the team?
+A. If there is some colleague of mine who pushes his/her idea a lot. 
+
+
+INTRO: 
+-Hi I am Danish Amin, I am currently working at Reliance Jio, as a software developer for the E commerce Website JioMart. JioMart is and online Retail business and specifically work with the inventory management team, where I with my team, is responsible for introducing and revising support and features to improve inventory support. 
+-As a backend Developer I have worked on key features, like Top deals, product search and product tracker. I have also work on critical projects such as launch of our new business model, Express JioMart, which prioritizes on super fast delivery of products. 
+-Apart from my current job, I have also worked with Crystalball team, who provides Drone based innovative service and solutions. 
+-In Cyrstalball I was working as software developer and I helped my team to build Drone Flight Managment system. 
+-About my education qualifications I have also done several projects, to mention a few of them such as Neural Radiance Field implementation, Voice Command Recognition, build backend for websites using java and spring.
+
+Hi, I am Danish Amin, currently I am working in Reliance Jio, as a software developer, for the Ecommerce webiste JioMart.
+In JioMart, I work for the the Inventory Management team. There I and my team are responsible for introducing and revising various changes and support, I have worked on numerous features for the website as a backend developer, to mention a few ofthem, such as, top deals, product search, product creation, virtual categories, inventory synchronization and more.
+Apart from my current job, I have also worked with Crystalball team. At Crystalball, they provide drone based innovative solutions and services. In Crystalball I was a software developer, and I helped them to build Drone Management System which is software user interface bult using QT framework and python, the software helps to manage and monitor drone activity throughout life-cycle of drone flight.
+I have also done various project related to machine learning and backend programming to mention a few of them such as Implementation of Neural Radiance Field paper, where a Deep Neural Network and statistics is used to to performing volumetric rendering, when it was published in oct of 2020 it produced state of the art results.
+The other project I worked on was Voice command reconginition, where I built and trained an ANN model from scratch, to detect a set voice commands and used it to control wireless bot.
+I have also done projects related to banckend Web development using java and spring, such as backend writing backend for airline booking site, designing and implementing Access Control List, writing RESTful apis and more.
+Additionally I have done some other projects like building Ray tracing engine and 2D physics simulator, which requires a strong understanding of Mathematics, advance algorithms and data structures.
+
+Q. Why Amazon?
+A. (Scale, Impact, high standard, Better opportunity) As a software developer I have been looking for oppurtunities where I can work on projects which has huge impact on its customers, Amazon is one of such companies, the products and service provides by Amazon has a huge impact on it customer with a global reach, it will be exciting and a great expirence to work on projects with such huge reach and impact.
+
+Personally I have been fascianted by the idea of providing impact, ever since I joined Jio and my changes and ideas started to reflect at production level and were being used by hundreds of thousands users per day, it gave me a great staisfaction and motivation to work. At Amazon this impact is on global level, the services and products afftect millions of users on daily basis, and knowing this will provide me extra motivation to work.
+
+To have services and products on a global level must require projects of huge scale and of high standards, wokring on such project will added up as a grear learning experience and will be a great oppurtunity as well.
+
+Q. Why should we hire you?
+I have been working as a software developer for around 2 years, and I have been to multiple teams and different roles as well. Therefore I have a good team work experience, I am also flexible and adaptive and versatile.
+
+
+Q. Tell me about a time you failed at work. What did you learn from it?
+A. (responsibility, accountibility, take away) Few years back, when I started to work with Crystalball team, as my first project I was assigned to build a user interface for Drone Flight managament. The first task was to build a couple of pages for the insterface, back then I had some knowledge on building User Interface and so when I was asked to provide a deadline for the task, I gave them reletivily short deadline.
+Later while working on the project, small details started to unfold and soon I realized that its not only about implementation of features but also thier intractions with other features, which made the task much more difficult than I expected. To overcome this new issue I have to work few more hours than required and my team also provided em with some external help, I overshooted the deadline but not by a great extent, the quick realization, proper planning and working more hours, healped me to recover the situation. I learned to do a better and in-depth analysis while working on projects and estimation deadlines.
+
+
+Tell me about a challenge you faced. What was your role & the outcome?
+A. (Decison Making, Analysis, Novelty) In Jio I am working with the team, which is responsible for the inventory managment of the E-Commerce Website JioMart. For this inventory management system, we have to push and synchronize data through many of databases and platform. while the previous implementations to synchronize databses was simple but not robust enough to deal with the increasing number of products. Recently it started to get really slow with a lot of memory consumption too. Our team has to find a solution for better synchronization, I with my colleagues were assigned this task to improve the performance as quickly as posible. First of all, I went through the previous implementation to find stragglers, but I found that the logic itself was crude. To address and imporve this issue I quickly held a meeting with manager and my team with the proposed solution where we smarlty update the table based on previous updatedtime. The solution was accepted but we still had the memory issue. Later to overcome this issue, I proposed to hash the columns of tables while we compare them, this simple technique reduces the memory consumption drastically.
+
+Tell me about a time you disagreed with a coworker / manager / decision
+A. (leadership, negotiation skill, commitment) I was assign a task ,with my colleagues, to design and implement Access Control List system(ACL) for our team's internal usage of resources. While designing ACL system, my colleague and I had a disagreement on ACL Database design, he was much baised towards denormalized DB and I wanted to have a DB design normalized but somewhere in the middle of the both extremes, later to convience my colleague I explained him the limitation we are going to face in future with denormalized approach and how with little normalization we can have best of both worlds, with end of the presentation, he was convinced.
+
+Q. Tell me about a time you had to work or make a decision quickly / under a tight deadline
+A. (Decision Making, Analysis, Approach) At the launch of the new website, we had a tight deadline and a lot of work, the task I was assigned was to modify, rewirte and test existing backend programs to support the new demands for the new website, Since I have to do a lot of task, I first made a several soft goals to track my progress, then based on urgency and simplicity I decided the priorities of the task and started to complete them one by one, I kept the work load limited by focusing only on the important features this also helped me to maintain focus for longer period of time, finally I was able to complete the task on time.
+
+Q. Tell me about a time your work was criticized.
+A. There has been one such case. I was assigned to implement a new api to get details regarding products, since the requirements were vague, I have to figure out the complete requirements, after initial few meetings I fixed requirements list and started to work on it. At some point later I realised that there is one more additional detail, the api must cover but I didn't have enough time to implement it, so I talked regarding this with manager. He knew that the requirements were vague but he was expecting a proper analysis from my side, he granted me some additional time, to complete the api, later I finished the task.
+
+Q. Tell me about at time you re-designed a process and why.
+A. Recently I was assigned to complete an incomplete project. It was to implement Access Control List to restrict and control api exposed to Business team. I was told they had some initial idea regarding its design but due to lack of time and limit memebers in the team, they were not able to implement it. As a starting point I decide to go through the initial design. After a quick inspection I realized the design had some drawback and as per the current requirement it was an overkill. So I decided to held a meeting with manager to address this issue, and asked him if I could redesign the ACL system, since the current design demands more resources than is required. Later I was granted additional time, and I started to resdesign the System. Previously Ever user had a unique role to resource mapping regardless having same resource access, such mapping can help with performance in large pool of roles, but that was not the case here, so I pulled out the role and resource independently with one to many mapping to improve memory consumption. I also implemented new web Filters which would cache the results in oder to reduce Database calls. Additionally changed session from having static duration to dynamic duration to save reloads which make redundant calls to get ACL information.
+
+Q. Tell me about a time that you failed at work
+A. While working with Crystalball team, I got an urgent and unexpected task to completed quickly. The task was to design a new camera-saflty module since old one was not working, since the task was unexpected and urgent, out team didn't have any extra time to hire someone for this project, I had some prior experince with IOT devices and also had the knowledge to integrate it with User Interface I build. So I accepted the task. Due to experince with IOT devices, I was quickly able to implement the feature and itegrate it with User Interface, but deadline was really short and even after working hard and completing the implementation quickly I was left with little time to test the safe mechanism in real time. This turned out to be a mistake, and due to this the safty mechanism failed in a real time flight situation, luckly nothing was harmed. I took the responsibility for the failure and later that day, testing the safty mechanism properly and fixed the issue.
+
+Q. Tell me about a time you solved a big problem in your company.
+A. In Jio I am working with the team, which is responsible for the inventory managment of the E-Commerce Website JioMart. For this inventory management system, we have to push and synchronize data through many of databases and platform. while the previous implementations to synchronize databses was simple but not robust enough to deal with the increasing number of products. Recently it started to get really slow with a lot of memory consumption too. Our team has to find a solution for better synchronization, I with my colleagues were assigned this task to improve the performance as quickly as posible. First of all, I went through the previous implementation to find stragglers, but I found that the logic itself was crude. To address and imporve this issue I quickly held a meeting with manager and my team with the proposed solution where we smarlty update the table based on previous updatedtime. The solution was accepted but we still had the memory issue. Later to overcome this issue, I proposed to hash the columns of tables while we compare them, this simple technique reduces the memory consumption drastically.
+
+------------Questions with no proper answers-------------
+Q. tell me about a time when you had a disagreement with you colleagues?
+A. While I was in CrystalBall team, I was working on a project of building User Interface for the CrystalBall Drone Flight Managament
+
+Q. Tell me about a time you had a conflict with a coworker or manager and how you approached it
+A. 
+
+Q. Tell me about a time when you had a plan but ran into some obstacles. What did you do about it?
+A. ===
+
+Q. What is the most innovative idea you've ever had?
+A. === hashing sync?
+
+Q. Tell me about a project in which you had to deep dive into analysis
+A. === NeRF, QT?
+
+Q. Tell me about the most complex problem you have worked on
+A. === NeRF?, Ray Tracing?
+
+Q. Tell me how you deal with ambiguity.
+A. ===
+
+Q. Tell me about the most challenging project you ever worked on
+A. ===
+
+Q. Tell me about a time when you had to handle pressure
+A. ===
+
+Q. Tell me about a time when you had two deadlines at the same time. How did you manage the situation?
+A. ===
+
+Q. Tell me about your most significant accomplishment. Why was it significant?
+A. ===
+
+Q. What was the largest project you've executed?
+A. ===
+
+Q. Tell me about a time when you failed to do the right thing
+A. ===
+
+Q. tell me about a time when you had ambiguies requirment?
+A. ===
+
+
+
+
+-----------Not so likly questions--------------
+Q. Tell me about a time you provided feedback that was helpful to a peer
+
+Q. Tell me about a time you hired or worked with people smarter than you are
+
+Q. Tell me about a time you stepped in to help a struggling teammate
+
+Q. How do you prioritize tasks in your current role?
+
+Q. Tell me about a time when you made a decision which impacted the team or the company
+
+Q. Tell me about a decision that you made about your work and you regret now
+
+Q. customer obsession
+A. customeer obsession, ownership
+
+Q. UK working environment.
+A. Addaptation, Experience
+
+Q. Tell me about a time you proposed a non-intuitive solution to a problem and how you identified that it required a different way of thinking
+
+Q. Tell me about a time when you were faced with a problem that had a number of possible solutions. What was the problem and how did you determine the course of action? What was the outcome?
+
+Q. Tell me about a time you applied judgment to a decision when data was not available
+
+Q. Tell me about a time when you used a lot of data in a short period of time
+
+Q. Tell me about a time when you went over and above your job responsibility in order to help the company.
+
+Q. Tell me about a time you did something at work that wasn't your responsibility / in your job description.
+
+Q. Tell me about a time when you had to make an important decision without approval from your boss.
+
+Q. Tell me about a time you had to change your approach because you were going to miss a deadline
+
+Q. Tell me about a time you had to make an urgent decision without data. What was the impact and would you do anything differently? 
+
+Q. Tell me about a time when you launched a feature with known risks
+
+Q. Tell me about a time you had a conflict with your team but decided to go ahead with their proposal
+
+
+* Use DSA Keywords and algorithm names while explaining stuff 
+eg1 2sum
+Danish - we can use hashmap to solve it
+Danish Pro - aside linear search or binary search, saving keys in a hashtable can be..
+
+* Explain why in your approach .
+eg2 Sliding Window Max
+Danish - we can you dequeu to solve this 
+Danish Pro - instead of searching for everywindow, we can store only those values which are in increasing order for that purpose i will use dequeu
+
+* Say thank you / please always everytime
+
+* Write code only when interviewer is clear with approach 
+
+* Have eyes on edge case while wrting code
+
+* Donot add new line after every if/else , changing variable names
+
+* Bodly ask wether or not approach seems right , don't hasitate
+
+* Start with an positive attitue , like you are working with the interviewer in office 
+Danish : i m giving interview please be nice to me :.....(
+
+
+
+i have been working as a software eng around 2 years and have learned a lot in my career path and m looking my future in this domain for a long term.
+
+i have shown a lot of improvment in my work style and always keep trying to approach problems in most optimised way, and in this way i m able to deliver and make a great impact in the team .
+
+ALSO Working over different techonolgies and using my DSA knowledge to come up with much better solutions have given me confidence over the period to become a good software eng .
+
+adaptive, flexible, good learner, innovative, high standard of working.
+

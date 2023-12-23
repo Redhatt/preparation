@@ -1,28 +1,38 @@
 from debug import *
-
-I =  lambda :int(input())
+from collections import deque, defaultdict, Counter
+from itertools import accumulate
+from bisect import *
+import operator
+import sys;input = sys.stdin.readline
+# sys.setrecursionlimit(100001)
+# import sys, os, io; input = io.BytesIO(os.read(0, os.fstat(0).st_size)).readline
+S = lambda : input().strip()
 L = lambda :list(map(int, input().split()))
+I =  lambda :int(input().strip())
 T = lambda :map(int, input().split())
 mod = int(1e9) + 7
 
 
-N, K = T()
-lis = L()
+t = I()
+for _ in range(t):
+    n = I()
+    lis = L()
+    lis.sort()
+    x = 0
+    c = 0
+    for i in lis:
+        # print(i, x, c)
+        if x and i>1:
+            temp = i
+            i -= min(0, i-x)
+            x -= temp-i
+            c += 1
 
-dp = [0]*(K+1)
-dp[0] = 1
-
-for i in range(1, N+1):
-    
-    s = [0]*(K+1)
-    s[0] = dp[0]
-    for k in range(1, K+1):
-        s[k] = (s[k-1] + dp[k])%mod
-
-    for k in range(K+1):
-        if k<=lis[i-1]:
-            dp[k] = s[k]
+        if i<4:
+            c += i
+            x += i
         else:
-            dp[k] = s[k] - s[k-lis[i-1]-1]
+            c += i//2 + 1 + (i&1)
+            x = 0
 
-print(dp[-1]%mod)
+    print(c)
