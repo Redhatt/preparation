@@ -1,38 +1,56 @@
 from debug import *
-from collections import deque, defaultdict, Counter
-from itertools import accumulate
-from bisect import *
-import operator
 import sys;input = sys.stdin.readline
-# sys.setrecursionlimit(100001)
 # import sys, os, io; input = io.BytesIO(os.read(0, os.fstat(0).st_size)).readline
-S = lambda : input().strip()
+S = lambda :input().strip()
 L = lambda :list(map(int, input().split()))
-I =  lambda :int(input().strip())
+I = lambda :int(input().strip())
 T = lambda :map(int, input().split())
-mod = int(1e9) + 7
+
+
+def solve(temp, s):
+    low = high = 0
+    curs = 0
+    while low<=high and high<n:
+        a,b,c = temp[low]
+        x,y,z = temp[high]
+        if (b-a+1)*c + (y-x+1)*z 
+
 
 
 t = I()
+
 for _ in range(t):
-    n = I()
+    n, q = T()
     lis = L()
-    lis.sort()
-    x = 0
-    c = 0
-    for i in lis:
-        # print(i, x, c)
-        if x and i>1:
-            temp = i
-            i -= min(0, i-x)
-            x -= temp-i
-            c += 1
 
-        if i<4:
-            c += i
-            x += i
-        else:
-            c += i//2 + 1 + (i&1)
-            x = 0
+    temp = []
 
-    print(c)
+    cur = 0
+    while cur<n:
+        last = cur
+        while cur+1<n and lis[cur+1] == lis[cur]: cur+=1
+        temp.append([last, cur, lis[cur]])
+        cur+=1
+
+    for _ in range(q):
+        p = L()
+        if p[0] == 1:
+            s = p[1]
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
